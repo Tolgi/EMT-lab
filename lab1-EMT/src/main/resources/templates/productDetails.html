@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/4.3.1/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen" />
+
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/3.3.1-2/jquery.min.js"
+            th:src="@{/webjars/jquery/3.3.1-2/jquery.min.js}"></script>
+    <title>Title</title>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Portfolio Item Heading -->
+    <h1 class="my-4">Product Details
+    </h1>
+
+    <!-- Portfolio Item Row -->
+    <div class="row">
+
+        <div class="col-md-12">
+            <img class="img-fluid" th:src="${productDetails.imgLink}" alt="" style="height: 400px; width: 370px">
+        </div>
+
+        <div class="col-md-8">
+            <h3 th:text="'Name: '+ ${productDetails.name}"></h3>
+        </div>
+
+        <div class="col-md-8">
+            <h3 th:text="'Category: ' + ${productDetails.category.name}"></h3>
+        </div>
+
+        <div class="col-md-8">
+            <h3 th:text="'Manufacturer: '+ ${productDetails.manufacturer.name}"></h3>
+        </div>
+
+
+        <div class="col-md-8">
+            <p class="description" th:text="${productDetails.description}"></p>
+        </div>
+
+    </div>
+
+
+
+    <br>
+    <div class="container">
+      <div class="form-group">
+          <a th:href="'/checkout/'+${productDetails .id}" class="btn btn-primary btn-lg">Buy</a>
+        <a th:href="@{'/products'}"  class="btn btn-info btn-lg">All products</a>
+      </div>
+    </div>
+    <br>
+    <br>
+    <br>
+
+
+    <!-- /.row -->
+
+    <!-- /.row -->
+
+</div>
+<!-- /.container -->
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/4.3.1/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen" />
+
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/3.3.1-2/jquery.min.js"
+            th:src="@{/webjars/jquery/3.3.1-2/jquery.min.js}"></script>
+    <title>Title</title>
+</head>
+
+<body>
+
+<main>
+    <div class="container">
+        <ul class="list-group" th:each="product : ${productList}"><!-- FOR CIKLUS   ||   TH:TEXT e za zimanje za informacija od promenliva -->
+            <li class="list-group-item list-group-item-action" >
+                <div class="form-group row flex-v-center">
+                    <span th:text="${product.id}"></span>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                     <img class="img-fluid" th:src="${product.imgLink}" alt="" style="width: 150px; height: 140px">
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a th:text="${product.name}" th:href="@{'/products/' + ${product.id}}"></a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <form th:action="@{/products}" th:method="delete">
+                        <input name="productId" th:value="${product.id}" type="hidden">
+                        <button class="btn btn-danger">Delete</button>
+                     </form>
+                </div>
+            </li>
+        </ul>
+        <br>
+        <br>
+        <div class="form-group">
+            <a th:href="@{'/products/add'}"  class="btn btn-info btn-lg">Add new product</a>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>
